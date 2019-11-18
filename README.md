@@ -1,26 +1,34 @@
-# META PONG
+# META  PONG
+
+     __  __ _____ _____  _       ____   ___  _   _  ____ 
+    |  \/  | ____|_   _|/ \     |  _ \ / _ \| \ | |/ ___|
+    | |\/| |  _|   | | / _ \    | |_) | | | |  \| | |  _ 
+    | |  | | |___  | |/ ___ \   |  __/| |_| | |\  | |_| |
+    |_|  |_|_____| |_/_/   \_\  |_|    \___/|_| \_|\____|
+
 
 *I didn't have time to build a decent pong game,
-so I built a pong game building machine.* --the EMP
+so I started building a pong game building machine.*
 
-Meta Pong is a pong-like video game, and an experiment in
-collaborative, efficient, haskell-based game development.
+Meta Pong is a pong-like video game, built with Haskell,
+and an experiment in efficient development.
+It is owned by its player-contributors.
 
-Meta Pong is owned by its player-contributors. 
 New player-contributors are always welcome.
 Would you like to get involved right now ?
-
 You can play at any of these levels:
 
-- pong - play the (most popular version of) the game itself
+1. ponggame  - install and enjoy the game (the most popular version of it. this doesn't exist yet.)
 
-- pongtest - play alternate versions of the game, vote on them, provide testing & feedback
+2. pongtest  - play alternate versions of the game, vote on them, provide testing & feedback
 
-- pongdev - improve the game, propose new versions of the game, following the documented process
+3. pongdev   - improve the game, propose new versions of the game, following the PROCESS
 
-- pongmaint - game packaging and delivery, project maintenance, process improvement
+4. pongmaint - package and deliver the game, maintain the project, *and* define/improve the PROCESS
 
-- haskgame - improving the haskell games ecosystem (in ways relating to this project)
+5. haskgame  - improve the haskell games ecosystem (in ways relating to this project)
+
+This evolving document defines our PROCESS and serves as the Rules of Play.
 
 Meta Pong's goals include:
 
@@ -34,17 +42,12 @@ Our techniques/principles include:
 - crowd-sourced playtesting and maintenance
 - evolutionary product and process development
 - Nomic style meta-gaming
-- FUN, KINDNESS and PERSISTENCE
+- FUN, RESPECT and PERSISTENCE
 
 The project's scope is limited to:
 "pong-like games". There shall be a bouncing ball.
 
-For practicality, the project's infrastructure and overall
-broom-pushing and adjudication is provided by the Founder:
-
-Simon Michael <simon@joyful.com> (sm@Freenode, simonmic:matrix.org)
-
-who is also, by imperial decree (unless deposed.. but how ?):
+For practical reasons, infrastructure, broom-pushing and judgements are provided by the EMP:
 
      _____                                              __ 
     | ____|_ __ ___  _ __   ___ _ __ ___  _ __    ___  / _|
@@ -58,9 +61,11 @@ who is also, by imperial decree (unless deposed.. but how ?):
         | |  | |  __/ || (_| | |  __/ (_) | | | | (_| |
         |_|  |_|\___|\__\__,_| |_|   \___/|_| |_|\__, |
                                                  |___/ 
-                  _______ __  __ ______  
-                 / / ____|  \/  |  _ \ \ 
-                | ||  _| | |\/| | |_) | |
-                | || |___| |  | |  __/| |
-                | ||_____|_|  |_|_|   | |
-                 \_\                 /_/ 
+
+By imperial decree, the EMP is:
+
+Simon Michael <simon@joyful.com> (sm@Freenode, simonmic:matrix.org)
+
+(unless deposed.. but how.. ?)
+
+
