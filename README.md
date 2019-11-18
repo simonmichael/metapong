@@ -62,10 +62,9 @@ For practical reasons, infrastructure, broom-pushing and judgements are provided
         |_|  |_|\___|\__\__,_| |_|   \___/|_| |_|\__, |
                                                  |___/ 
 
-By imperial decree, the EMP is:
+By imperial decree this day Monday the 18th of November, 2019 CE., 
+the EMP is (unless deposed.. but how..?):
 
 Simon Michael <simon@joyful.com> (sm@Freenode, simonmic:matrix.org)
 
-(unless deposed.. but how.. ?)
-
-
+And the game of Meta Pong is declared open.
