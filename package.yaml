@@ -13,7 +13,7 @@ extra-source-files:
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
 # category:            Web
-description:         Please see the README on GitHub at <https://github.com/simonmichael/metapong#readme>
+description:         A pong-like video and meta game, owned by its player-contributors
 
 dependencies:
 - base >= 4.9 && < 5
