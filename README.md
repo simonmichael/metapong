@@ -1,5 +1,3 @@
-# META  PONG
-
      __  __ _____ _____  _       ____   ___  _   _  ____ 
     |  \/  | ____|_   _|/ \     |  _ \ / _ \| \ | |/ ___|
     | |\/| |  _|   | | / _ \    | |_) | | | |  \| | |  _ 
@@ -10,25 +8,37 @@
 *I didn't have time to build a decent pong game,
 so I started building a pong game building machine.*
 
+## Introduction to META PONG
+
 Meta Pong is a pong-like video game, built with Haskell,
-and an experiment in efficient development.
+and an experiment in efficient free software development.
 It is owned by its player-contributors.
 
-New player-contributors are always welcome.
+The game began on 2019-11-18, and new player-contributors are welcome.
 Would you like to get involved right now ?
 You can play at any of these levels:
 
-1. ponggame  - install and enjoy the game (the most popular version of it. this doesn't exist yet.)
+- **Gamer**: - 
+Install and enjoy the game (the most popular version of it. This doesn't exist yet.)
 
-2. pongtest  - play alternate versions of the game, vote on them, provide testing & feedback
+- **Tester** - 
+Play alternate versions of the game, vote on them, provide testing & feedback.
 
-3. pongdev   - improve the game, propose new versions of the game, following the PROCESS
+- **Developer** - 
+Improve the game, propose new versions of the game, following the Process.
 
-4. pongmaint - package and deliver the game, maintain the project, *and* define/improve the PROCESS
+- **Maintainer** - 
+Package and deliver the game, maintain the project, define/improve the Process.
 
-5. haskgame  - improve the haskell games ecosystem (in ways relating to this project)
+- **Haskeller** - 
+Improve the haskell games ecosystem (in ways relating to this project).
 
-This evolving document defines our PROCESS and serves as the Rules of Play.
+<!-- And of course only the Emperor can play this role: -->
+
+<!-- - **Emperor** -  -->
+<!-- Provide infrastructure and judgements. -->
+
+This evolving document defines our Process and serves as the Rules of Play.
 
 Meta Pong's goals include:
 
@@ -68,3 +78,5 @@ the EMP is (unless deposed.. but how..?):
 Simon Michael <simon@joyful.com> (sm@Freenode, simonmic:matrix.org)
 
 And the game of Meta Pong is declared open.
+
+<!-- ## How to install and play the Meta Pong videogame -->
