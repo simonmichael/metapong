@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 663352e7d4562bfc7277c82ebffc67b5c41fcf411a3574e1bb9e5c588d7ade5f
+-- hash: f2778c3d844b50a3a2d363cbdfde30e14782c30d4806946225798c84774af6cd
 
 name:           metapong
 version:        0.1
@@ -38,11 +38,11 @@ library
   default-language: Haskell2010
 
 executable metapong
-  main-is: Main.hs
+  main-is: metapong.hs
   other-modules:
       Paths_metapong
   hs-source-dirs:
-      app
+      ./.
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       ansi-terminal-game >=0.6

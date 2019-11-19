@@ -24,8 +24,8 @@ library:
 
 executables:
   metapong:
-    main:                Main.hs
-    source-dirs:         app
+    main:                metapong.hs
+    source-dirs:         .
     ghc-options:
     - -threaded
     - -rtsopts
