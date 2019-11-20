@@ -19,16 +19,20 @@ Would you like to get involved right now ?
 You can play at any of these levels:
 
 - **Gamer**: - 
-Install and enjoy the game (the most popular version of it. This doesn't exist yet.)
+Install and enjoy the game.
+<!-- [How to install and play](#how-to-install-and-play) -->
 
-- **Tester** - 
+- **Playtester** - 
 Play alternate versions of the game, vote on them, provide testing & feedback.
+<!-- [How to playtest](#how-to-playtest) -->
 
 - **Developer** - 
 Improve the game, propose new versions of the game, following the Process.
+<!-- [How to develop](#how-to-develop) -->
 
 - **Maintainer** - 
 Package and deliver the game, maintain the project, define/improve the Process.
+<!-- [How to maintain](#how-to-maintain) -->
 
 - **Haskeller** - 
 Improve the haskell games ecosystem (in ways relating to this project).
@@ -79,4 +83,48 @@ Simon Michael <simon@joyful.com> (sm@Freenode, simonmic:matrix.org)
 
 And the game of Meta Pong is declared open.
 
-<!-- ## How to install and play the Meta Pong videogame -->
+## Gamers: How to install and play
+
+```
+$ git clone https://github.com/simonmichael/metapong.git
+$ cd metapong
+$ stack update && stack run
+```
+or
+```
+cabal update && cabal run metapong
+```
+
+## Playtesters: How to playtest
+
+Install as above. 
+Test what can be tested (docs, installation, game..)
+
+Join #haskell-game on Freenode, send feedback to sm.
+
+## Developers: How to develop
+
+Use #haskell-game for help and coordination.
+
+Fork the repo on github. Clone to your local machine. 
+
+`make rerun` to install deps and run repeatedly (press q or ctrl-c to rebuild).
+
+Make changes to 
+source files (metapong.hs..),
+packaging files (package.yaml, stack.yaml..),
+or game docs (README.md..).
+
+Commit changes in the style of past changes.
+(Small, atomic, a clear sentence describing the change..)
+
+Push changes to your repo. Submit a pull request. Follow up until the PR is resolved.
+
+## Maintainers: How to maintain
+
+Use #haskell-game to coordinate.
+
+Get some PRs accepted as a developer.
+
+Send PRs changing process docs (README.md..).
+Help out with maintainer tasks (changelogs, packaging, install testing, support..).
