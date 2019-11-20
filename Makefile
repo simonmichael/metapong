@@ -1,8 +1,14 @@
 # metapong makefile
 
+# install deps, build and run
 run:
 	stack run metapong
 
+# run repeatedly. Works better than run-watch
+rerun:
+	while true; do stack run; date; sleep 1; done
+
+# run, restarting when the executable changes. Doesn't work well (shows error, ignores input)
 run-watch watch:
 	stack exec -- which metapong | entr -rn stack run metapong
 
