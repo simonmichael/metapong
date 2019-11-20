@@ -1,5 +1,11 @@
 # metapong makefile
 
+run:
+	stack run metapong
+
+run-watch watch:
+	stack exec -- which metapong | entr -rn stack run metapong
+
 BROWSE=open
 LIVERELOADPORT=9501
 LIVERELOAD=livereloadx -p $(LIVERELOADPORT) -s
@@ -8,7 +14,7 @@ LIVERELOAD=livereloadx -p $(LIVERELOADPORT) -s
   # A reload happens at the end when the css/js files get copied.
 
 # Auto-rebuild site, and watch changes in a new browser window.
-doc-watch watch:
+doc-watch:
 	make doc-auto &
 	(sleep 1; $(BROWSE) http://localhost:$(LIVERELOADPORT)/README.html) &
 	$(LIVERELOAD)
