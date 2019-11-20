@@ -9,6 +9,14 @@ import Lib
 --------------------------------------------------------------------------------
 -- Setup
 
+fps = 30
+w = 80
+h = 24
+xmin = 2
+xmax = 79
+ymin = 2
+ymax = 23
+
 main :: IO ()
 main = do
   g <- newGame
@@ -17,19 +25,19 @@ main = do
 newGame :: IO (Game State)
 newGame = return $
   Game{
-     gScreenWidth   = 80
-    ,gScreenHeight  = 24
-    ,gFPS           = 30
-    ,gLogicFunction = update
-    ,gDrawFunction  = draw
-    ,gQuitFunction  = quit
+     gScreenWidth   = w
+    ,gScreenHeight  = h
+    ,gFPS           = fps
+    ,gLogicFunction = gameUpdate
+    ,gDrawFunction  = gameDraw
+    ,gQuitFunction  = gameShouldQuit
     ,gInitState     = s
     }
   where
     s = State {
        sQuit = False
-      ,sBallX = 40
-      ,sBallY = 12
+      ,sBallX = w `div` 2
+      ,sBallY = h `div` 2
       ,sBallVX = 2
       ,sBallVY = 1
       }
@@ -45,19 +53,18 @@ data State = State {
 --------------------------------------------------------------------------------
 -- Logic
 
-quit s = sQuit s
+gameShouldQuit s = sQuit s
 
-update s ev =
+gameUpdate s ev =
+  gameShouldQuitUpdate s ev &
+  ballUpdate
+
+gameShouldQuitUpdate s ev =
   case ev of
     KeyPress 'q' -> s{sQuit = True}
-    _            -> ballMove s
+    _            -> s
 
-xmin = 2
-xmax = 79
-ymin = 2
-ymax = 23
-
-ballMove s@State{..} =
+ballUpdate s@State{..} =
   s{sBallX=bx''
    ,sBallY=by''
    ,sBallVX=bvx
@@ -67,16 +74,16 @@ ballMove s@State{..} =
     bx' = sBallX + sBallVX
     by' = sBallY + sBallVY
     (bx'', bvx) | bx' > xmax = (bx' - 1, (-sBallVX))
-                 | bx' < xmin = (bx' + 1, (-sBallVX))
-                 | otherwise  = (bx'    , sBallVX)
+                | bx' < xmin = (bx' + 1, (-sBallVX))
+                | otherwise  = (bx'    , sBallVX)
     (by'', bvy) | by' > ymax = (by' - 1, (-sBallVY))
-                 | by' < ymin = (by' + 1, (-sBallVY))
-                 | otherwise  = (by'    , sBallVY)
+                | by' < ymin = (by' + 1, (-sBallVY))
+                | otherwise  = (by'    , sBallVY)
 
 --------------------------------------------------------------------------------
 -- Drawing
 
-draw s@State{..} =
+gameDraw s@State{..} =
   walls s &
   (sBallY,sBallX) % ball s
 
@@ -84,29 +91,32 @@ ball s = color White Vivid $ cell 'o'
 
 walls _ =
   color Blue Dull $
-  stringPlane $ unlines [
-   "********************************************************************************"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"*                                                                              *"
-  ,"********************************************************************************"
-  ]
+  box '*' w h &
+  (2,2) % box ' ' (w-2) (h-2) &
+  (h,w `div` 2 - 4) % stringPlane " q: quit "
+  -- stringPlane $ unlines [
+  --  "********************************************************************************"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"*                                                                              *"
+  -- ,"********************************************************************************"
+  -- ]
