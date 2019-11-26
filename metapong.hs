@@ -1,17 +1,40 @@
+{-
+metapong.hs
+
+http://hackage.haskell.org/package/ansi-terminal-game/docs/Terminal-Game.html
+
+-}
+
 {-# LANGUAGE RecordWildCards #-}
 
 module Main where
 
 import Terminal.Game
+-- import Lib
 
-import Lib
+--------------------------------------------------------------------------------
+-- Data types
+
+-- Game st - an ANSI terminal game with custom state, from Terminal.Game.
+
+-- The "world" state of a pong game.
+data Pong = Pong {
+   sQuit :: Bool
+  ,sBallX :: Column
+  ,sBallY :: Row
+  ,sBallVX :: Integer
+  ,sBallVY :: Integer
+  }
+
+-- A pong game.
+type PongGame = Game Pong
 
 --------------------------------------------------------------------------------
 -- Setup
 
-fps = 30
-w = 80
-h = 24
+fps  = 30
+w    = 80
+h    = 24
 xmin = 2
 xmax = 79
 ymin = 2
@@ -19,35 +42,30 @@ ymax = 23
 
 main :: IO ()
 main = do
-  g <- newGame
+  g <- newPongGame
   playGame g
 
-newGame :: IO (Game State)
-newGame = return $
-  Game{
-     gScreenWidth   = w
-    ,gScreenHeight  = h
-    ,gFPS           = fps
-    ,gLogicFunction = gameUpdate
-    ,gDrawFunction  = gameDraw
-    ,gQuitFunction  = gameShouldQuit
-    ,gInitState     = s
-    }
-  where
-    s = State {
-       sQuit = False
-      ,sBallX = w `div` 2
-      ,sBallY = h `div` 2
-      ,sBallVX = 2
-      ,sBallVY = 1
+newPongGame :: IO PongGame
+newPongGame = do
+  s <- newPong
+  return $
+    Game{
+       gScreenWidth   = w
+      ,gScreenHeight  = h
+      ,gFPS           = fps
+      ,gLogicFunction = gameUpdate
+      ,gDrawFunction  = gameDraw
+      ,gQuitFunction  = gameShouldQuit
+      ,gInitState     = s
       }
 
-data State = State {
-   sQuit :: Bool
-  ,sBallX :: Column
-  ,sBallY :: Row
-  ,sBallVX :: Integer
-  ,sBallVY :: Integer
+newPong :: IO Pong
+newPong = return $ Pong {
+   sQuit   = False
+  ,sBallX  = w `div` 2
+  ,sBallY  = h `div` 2
+  ,sBallVX = 2
+  ,sBallVY = 1
   }
 
 --------------------------------------------------------------------------------
@@ -64,7 +82,7 @@ gameShouldQuitUpdate s ev =
     KeyPress 'q' -> s{sQuit = True}
     _            -> s
 
-ballUpdate s@State{..} =
+ballUpdate s@Pong{..} =
   s{sBallX=bx''
    ,sBallY=by''
    ,sBallVX=bvx
@@ -83,7 +101,7 @@ ballUpdate s@State{..} =
 --------------------------------------------------------------------------------
 -- Drawing
 
-gameDraw s@State{..} =
+gameDraw s@Pong{..} =
   walls s &
   (sBallY,sBallX) % ball s
 
