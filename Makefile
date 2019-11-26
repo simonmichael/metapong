@@ -4,6 +4,10 @@
 run:
 	stack run metapong
 
+# build repeatedly with ghcid when files change.
+ghcid:
+	ghcid -c 'stack ghci metapong'
+
 # run repeatedly. Works better than run-watch
 rerun:
 	while true; do stack run; date; sleep 1; done
