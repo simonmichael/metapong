@@ -98,13 +98,13 @@ The Emperor, of course, is
 ## Gamers: How to install and play
 
 ```
-$ git clone https://github.com/simonmichael/metapong.git
-$ cd metapong
-$ stack update && stack run
+git clone https://github.com/simonmichael/metapong.git
+cd metapong
+stack update; stack run
 ```
 or
 ```
-cabal update && cabal run metapong
+cabal update; cabal run metapong
 ```
 
 ## Playtesters: How to playtest
@@ -112,7 +112,7 @@ cabal update && cabal run metapong
 Install as above. 
 Test what can be tested (docs, installation, game..)
 
-Join #haskell-game on Freenode, send feedback to sm.
+Join #haskell-game on Freenode, give feedback.
 
 ## Developers: How to develop
 
@@ -120,7 +120,7 @@ Use #haskell-game for help and coordination.
 
 Fork the repo on github. Clone to your local machine. 
 
-`make rerun` to install deps and run repeatedly (press q or ctrl-c to rebuild).
+`make rerun` to install deps and run repeatedly (press q to rebuild).
 
 Make changes to 
 source files (metapong.hs..),
