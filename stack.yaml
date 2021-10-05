@@ -1,12 +1,10 @@
-resolver: lts-14.15
+resolver: lts-18.10
 
 packages:
 - .
 
-# - acme-missiles-0.3
-# - git: https://github.com/commercialhaskell/stack.git
-#   commit: e7b331f14bcffb8367cd58fbfc8b40ec7642100a
 extra-deps:
-- ansi-terminal-game-0.6.0.0
+- ansi-terminal-game-1.1.1.0
 - linebreak-1.0.0.3
-- timers-tick-0.4.1.0
+- timers-tick-0.4.3.0
+- unidecode-0.1.0.4
