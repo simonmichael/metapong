@@ -22,8 +22,8 @@ data Pong = Pong {
    sQuit :: Bool
   ,sBallX :: Column
   ,sBallY :: Row
-  ,sBallVX :: Integer
-  ,sBallVY :: Integer
+  ,sBallVX :: Int
+  ,sBallVY :: Int
   }
 
 -- A pong game.
@@ -34,7 +34,7 @@ type PongGame = Game Pong
 
 fps  = 30
 w    = 80
-h    = 24
+h    = 24::Int
 xmin = 2
 xmax = 79
 ymin = 2
@@ -50,13 +50,11 @@ newPongGame = do
   s <- newPong
   return $
     Game{
-       gScreenWidth   = w
-      ,gScreenHeight  = h
-      ,gFPS           = fps
+       gTPS           = fps
+      ,gInitState     = s
       ,gLogicFunction = gameUpdate
       ,gDrawFunction  = gameDraw
       ,gQuitFunction  = gameShouldQuit
-      ,gInitState     = s
       }
 
 newPong :: IO Pong
@@ -71,9 +69,9 @@ newPong = return $ Pong {
 --------------------------------------------------------------------------------
 -- Logic
 
-gameShouldQuit s = sQuit s
+gameShouldQuit = sQuit
 
-gameUpdate s ev =
+gameUpdate genv s ev =
   gameShouldQuitUpdate s ev &
   ballUpdate
 
@@ -91,17 +89,17 @@ ballUpdate s@Pong{..} =
   where
     bx' = sBallX + sBallVX
     by' = sBallY + sBallVY
-    (bx'', bvx) | bx' > xmax = (bx' - 1, (-sBallVX))
-                | bx' < xmin = (bx' + 1, (-sBallVX))
+    (bx'', bvx) | bx' > xmax = (bx' - 1, -sBallVX)
+                | bx' < xmin = (bx' + 1, -sBallVX)
                 | otherwise  = (bx'    , sBallVX)
-    (by'', bvy) | by' > ymax = (by' - 1, (-sBallVY))
-                | by' < ymin = (by' + 1, (-sBallVY))
+    (by'', bvy) | by' > ymax = (by' - 1, -sBallVY)
+                | by' < ymin = (by' + 1, -sBallVY)
                 | otherwise  = (by'    , sBallVY)
 
 --------------------------------------------------------------------------------
 -- Drawing
 
-gameDraw s@Pong{..} =
+gameDraw genv s@Pong{..} =
   walls s &
   (sBallY,sBallX) % ball s
 
@@ -109,8 +107,8 @@ ball s = color White Vivid $ cell 'o'
 
 walls _ =
   color Blue Dull $
-  box '*' w h &
-  (2,2) % box ' ' (w-2) (h-2) &
+  box w h '*' &
+  (2,2) % box (w-2) (h-2) ' ' &
   (h,w `div` 2 - 4) % stringPlane " q: quit "
   -- stringPlane $ unlines [
   --  "********************************************************************************"

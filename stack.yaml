@@ -1,10 +1,4 @@
-resolver: lts-18.10
+resolver: lts-20.10
 
 packages:
 - .
-
-extra-deps:
-- ansi-terminal-game-1.1.1.0
-- linebreak-1.0.0.3
-- timers-tick-0.4.3.0
-- unidecode-0.1.0.4

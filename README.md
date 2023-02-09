@@ -78,7 +78,7 @@ The Emperor provides infrastructure, guidance and judgements.
 
 The Emperor, of course, is
 
-> Simon Michael, <simon@joyful.com>, sm@Freenode, simonmic:matrix.org
+> Simon Michael, <simon@joyful.com>, simonmic:matrix.org, sm@libera.chat
 >
 >      _____                                              __ 
 >     | ____|_ __ ___  _ __   ___ _ __ ___  _ __    ___  / _|

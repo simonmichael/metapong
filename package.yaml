@@ -16,11 +16,8 @@ extra-source-files:
 description:         A pong-like video and meta game, owned by its player-contributors
 
 dependencies:
-- base >= 4.9 && < 5
-- ansi-terminal-game >= 0.6
-
-library:
-  source-dirs: src
+- base               >= 4.9 && < 5
+- ansi-terminal-game >= 1.8.1.0 && <1.9
 
 executables:
   metapong:
@@ -30,16 +27,3 @@ executables:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
-    dependencies:
-    - metapong
-
-tests:
-  metapong-test:
-    main:                Spec.hs
-    source-dirs:         test
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
-    dependencies:
-    - metapong
